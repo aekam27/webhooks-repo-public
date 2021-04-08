@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+      <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+      <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap5.min.js"></script>
+      <script src="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap5.min.css"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script
+         src="https://use.fontawesome.com/releases/v5.15.1/js/all.js"
+         data-auto-a11y="true"></script> 
+       <script type="text/javascript">
+           window.setTimeout(function(){ document.location.reload(true); }, 12000);
+       </script>
+      <title>Flix69inc</title>
+   </head>
+   <body>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-light fixed-top" id="mainNav">
+         <div class="container">
+            <a class="navbar-brand " href="#main" style="color: white;"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" style="color: hotpink;background-color: hotpink">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+               <ul class="navbar-nav ms-auto text-center">
+                  <li class="nav-item">
+                     <Button class="btn btn-danger" type="button" style="margin:10px">Dummy</Button>
+                  </li>
+                  <li class="nav-item">
+                     <Button class="btn btn-danger" style="margin:10px">Dummy</Button>
+                  </li>
+               </ul>
+            </div>
+         </div>
+      </nav>
+      <div class="main" id=main>
+         <br><br><br><br><br><br><br><br><br>
+         <div class="card" style="width: 80%;margin-left: auto;margin-right: auto;display: block">
+            <div class="card-header"><b style="font-size: 30px;color: black;font-family: serif">WEBHOOK REQUESTS</b></div>
+            <div class="card-body">
+               <div class="table-responsive">
+                     <table class="table table-striped table-bordered">
+                        <thead>
+                           <tr>
+                              <th style="font-family: serif;font-size: 25px;color: hotpink">Request ID</th>
+                              <th style="font-family: serif;font-size: 25px;color: hotpink">Author</th>
+                              <th style="font-family: serif;font-size: 25px;color: hotpink">Action</th>
+                              <th style="font-family: serif;font-size: 25px;color: hotpink">From_Branch</th>
+                              <th style="font-family: serif;font-size: 25px;color: hotpink">To_Branch</th>
+                              <th style="font-family: serif;font-size: 25px;color: hotpink">Time</th>
+                           </tr>
+                        </thead>
+                        <tbody style="overflow: scroll">
+                           {% for i in d %}
+                           <tr>
+                              <th scope="row">{{i[0]}}</th>
+                              <td>{{i[1]}}</td>
+                              <td>{{i[2]}}</td>
+                              <td>{{i[3]}}</td>
+                              <td>{{i[4]}}</td>
+                              <td>{{i[5]}}</td>
+                           </tr>
+                           {% endfor %}
+                        </tbody>
+                     </table>
+               </div>
+            </div>
+         </div>
+         <br>
+      </div>
+   </body>
+    <>
+</html>
