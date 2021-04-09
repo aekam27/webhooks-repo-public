@@ -8,12 +8,10 @@ Created on Fri Apr  9 01:15:12 2021
 from flask import Flask,request,redirect,render_template
 import json
 from pymongo import MongoClient
-
+from datetime import datetime
 mongo =  MongoClient("mongodb+srv://#:#@cluster0.vg8zq.mongodb.net/?retryWrites=true&w=majority")
 db = mongo["#"]
 app=Flask(__name__)
-
-
 @app.route("/")
 def home():
     try:
@@ -33,7 +31,30 @@ def home():
                 elif i=="to_branch":
                     tl.append(j)
                 elif i=="time":
-                    tl.append(j)
+                    d=j.split("T")
+                    print(d)
+                    date = datetime.strptime(d[0], '%Y-%m-%d')
+                    month=date.strftime("%B")
+                    weekday=date.strftime("%A")
+                    day=date.strftime("%d")
+                    year=date.strftime("%Y")
+                    s= weekday+", "+day+", "+month+", "+year
+                    t=d[1].split(":")
+                    if int(t[0])<12:
+                        s=s+" "+d[1]+"AM"
+                    else:
+                        s=s+" "+d[1]+"PM"
+                    tl.append(s)
+            if tl[2]=="Push":
+                b=tl[4].split("/")
+                s1=tl[1]+" pushed to "+b[-1]+" on "+tl[-1]
+            if tl[2]=="Pull_Request":
+                s1=tl[1]+" submitted a pull request from "+tl[3]+" to "+tl[4]+" on "+tl[-1]
+            if tl[2]=="Merge":
+                b=tl[4].split("/")
+                o=tl[3].split("/")
+                s1=tl[1]+" merged branch "+o[-1]+" to "+b[-1]+" on "+tl[-1]
+            tl.append(s1)
             fenddata.append(tuple(tl))
         return render_template("home.html",d=fenddata)
     except:
